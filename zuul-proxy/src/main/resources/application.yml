@@ -1,0 +1,45 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: zuul-proxy
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8383/eureka/
+
+zuul:
+  routes:
+    user-service:
+      path: /user-service/**
+    feign-service:
+      path: /feign-service/**
+  prefix: /proxy
+  sensitive-headers: Cookie,Set-Cookie,Authorization
+  add-host-header: true
+  PreLogFilter:
+    pre:
+      disable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'routes'
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+ribbon:
+  ConnectTimeout: 1000
+  ReadTimeout: 3000
+

@@ -1,0 +1,21 @@
+server:
+  port: 8901
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/JackZF/springcloud-config.git
+          username: 953284651@qq.com
+          password: 953284651zf
+          clone-on-start: true
+          search-paths: '{application}'
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8383/eureka/

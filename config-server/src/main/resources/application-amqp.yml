@@ -1,0 +1,36 @@
+server:
+  port: 8904
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/JackZF/springcloud-config
+          username: 953284651@qq.com
+          password: 953284651zf
+          clone-on-start: true
+          default-label: master
+          #search-paths: '{application}'
+  # rabbitmq相干配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8383/eureka/
+
+# 暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

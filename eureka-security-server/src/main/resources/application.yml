@@ -1,0 +1,18 @@
+server:
+  port: 8385
+
+spring:
+  application:
+    name: eureka-security-server
+  security:
+    user:
+      name: Jack
+      password: 123456
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+
